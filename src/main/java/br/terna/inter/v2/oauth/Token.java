@@ -1,11 +1,9 @@
 package br.terna.inter.v2.oauth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
 
 import java.time.LocalDate;
 
-@Data
 public class Token {
     @JsonProperty("access_token")
     private String accessToken;
@@ -23,5 +21,45 @@ public class Token {
 
     public boolean isExpired() {
         return expires.isBefore(LocalDate.now());
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
+
+    public String getTokenType() {
+        return tokenType;
+    }
+
+    public void setTokenType(String tokenType) {
+        this.tokenType = tokenType;
+    }
+
+    public Integer getExpiresIn() {
+        return expiresIn;
+    }
+
+    public void setExpiresIn(Integer expiresIn) {
+        this.expiresIn = expiresIn;
+    }
+
+    public String getScope() {
+        return scope;
+    }
+
+    public void setScope(String scope) {
+        this.scope = scope;
+    }
+
+    public LocalDate getExpires() {
+        return expires;
+    }
+
+    public void setExpires(LocalDate expires) {
+        this.expires = expires;
     }
 }

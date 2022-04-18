@@ -2,8 +2,6 @@ package br.terna.inter.v2.webhook;
 
 import br.terna.inter.util.JsonUtils;
 import br.terna.inter.v2.HttpInterConnectionV2;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 
 import java.net.URI;
 import java.net.http.HttpRequest;
@@ -13,10 +11,20 @@ import java.util.Map;
 public record WebHook(HttpInterConnectionV2 con) {
     private static final String URL = "https://cdpj.partners.bancointer.com.br/cobranca/v2/boletos/webhook";
 
-    @AllArgsConstructor
-    @Data
     private static class CreateForm {
         private String webhookUrl;
+
+        public CreateForm(String webhookUrl) {
+            this.webhookUrl = webhookUrl;
+        }
+
+        public String getWebhookUrl() {
+            return webhookUrl;
+        }
+
+        public void setWebhookUrl(String webhookUrl) {
+            this.webhookUrl = webhookUrl;
+        }
     }
 
     public boolean create(String callBackUrl) throws Exception {

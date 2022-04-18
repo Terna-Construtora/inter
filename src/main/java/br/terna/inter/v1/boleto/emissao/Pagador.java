@@ -1,27 +1,24 @@
 package br.terna.inter.v1.boleto.emissao;
 
-import lombok.Builder;
-import lombok.Data;
 import org.apache.commons.lang.StringUtils;
 
-@Data
-@Builder
+
 public class Pagador {
     private String cnpjCpf;
 
     private String nome;
 
-    @Builder.Default
+
     private String email = "";
 
-    @Builder.Default
+
     private String telefone = "";
 
     private String cep;
 
     private String numero;
 
-    @Builder.Default
+
     private String complemento = "";
 
     private String bairro;
@@ -32,10 +29,8 @@ public class Pagador {
 
     private String endereco;
 
-    @Builder.Default
     private String ddd = "";
 
-    @Builder.Default
     private TipoPessoa tipoPessoa = TipoPessoa.FISICA;
 
     public String isValid() {
@@ -109,5 +104,69 @@ public class Pagador {
     public String getTelefone() {
         String s = telefone.replaceAll("[^a-zA-Z0-9]", "").trim();
         return StringUtils.right(s, 9);
+    }
+
+    public void setCnpjCpf(String cnpjCpf) {
+        this.cnpjCpf = cnpjCpf;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getDdd() {
+        return ddd;
+    }
+
+    public void setDdd(String ddd) {
+        this.ddd = ddd;
+    }
+
+    public TipoPessoa getTipoPessoa() {
+        return tipoPessoa;
+    }
+
+    public void setTipoPessoa(TipoPessoa tipoPessoa) {
+        this.tipoPessoa = tipoPessoa;
     }
 }

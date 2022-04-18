@@ -1,6 +1,7 @@
 package br.terna.inter.v1.boleto;
 
 import br.terna.inter.HttpInterConnection;
+import br.terna.inter.util.JsonUtils;
 import br.terna.inter.v1.HttpInterConnectionV1;
 import br.terna.inter.v1.boleto.baixa.CodigoBaixa;
 import br.terna.inter.v1.boleto.consulta.Content;
@@ -10,8 +11,8 @@ import br.terna.inter.v1.boleto.consulta.Page;
 import br.terna.inter.v1.boleto.download.Storage;
 import br.terna.inter.v1.boleto.emissao.Emissao;
 import br.terna.inter.v1.boleto.emissao.EmissaoResponse;
-import br.terna.inter.util.JsonUtils;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
 import java.net.URI;
@@ -22,8 +23,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Slf4j
 public class InterV1 {
+    private static final Logger log = LoggerFactory.getLogger(InterV1.class);
     public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     private final static String CONSULTA_URL = "https://apis.bancointer.com.br:8443/openbanking/v1/certificado/boletos?";

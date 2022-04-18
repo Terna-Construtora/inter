@@ -10,7 +10,8 @@ import br.terna.inter.v2.boleto.consulta.FiltrarPor;
 import br.terna.inter.v2.boleto.consulta.Page;
 import br.terna.inter.v2.boleto.emissao.Emissao;
 import br.terna.inter.v2.boleto.emissao.EmissaoResponse;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.URI;
@@ -22,8 +23,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Slf4j
 public record Boleto(HttpInterConnectionV2 con) {
+    private static final Logger log = LoggerFactory.getLogger(Boleto.class);
+
     public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     private final static String CONSULTA_URL = "https://cdpj.partners.bancointer.com.br/cobranca/v2/boletos?";

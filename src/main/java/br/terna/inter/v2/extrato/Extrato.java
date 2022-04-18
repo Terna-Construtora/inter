@@ -1,7 +1,6 @@
 package br.terna.inter.v2.extrato;
 
 import br.terna.inter.v2.HttpInterConnectionV2;
-import lombok.Data;
 
 import java.net.URI;
 import java.net.http.HttpRequest;
@@ -15,7 +14,7 @@ public record Extrato(HttpInterConnectionV2 con) {
     private static final String URL = "https://cdpj.partners.bancointer.com.br/banking/v2/extrato?dataInicio=%s&dataFim=%";
     private static final String URL_PDF = "https://cdpj.partners.bancointer.com.br/banking/v2/extrato/exportar?dataInicio=%s&dataFim=%";
 
-    @Data
+
     private static class ExtratoResponse {
         List<LinhaExtrato> transacoes;
     }
@@ -25,7 +24,7 @@ public record Extrato(HttpInterConnectionV2 con) {
 
         HttpRequest request = con.newRequest().uri(new URI(urlCompleta)).build();
         HttpResponse<String> response = con.getHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-        return con.jsonResponse(response, ExtratoResponse.class).getTransacoes();
+        return con.jsonResponse(response, ExtratoResponse.class).transacoes;
     }
 
     public byte[] getExtratoPdf(LocalDate inicio, LocalDate fim) throws Exception {

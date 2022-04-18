@@ -1,20 +1,11 @@
 package br.terna.inter.v2.boleto.emissao;
 
-import lombok.Builder;
-import lombok.Data;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Data
-@Builder
-// @Slf4j
 public class Multa {
-    @Builder.Default
     private CodigoMulta codigoMulta = CodigoMulta.NAOTEMMULTA;
-    @Builder.Default
     private BigDecimal  taxa        = BigDecimal.ZERO;
-    @Builder.Default
     private BigDecimal  valor       = BigDecimal.ZERO;
     private LocalDate   data;
 
@@ -28,4 +19,37 @@ public class Multa {
     //     }
     //     return true;
     // }
+
+
+    public CodigoMulta getCodigoMulta() {
+        return codigoMulta;
+    }
+
+    public void setCodigoMulta(CodigoMulta codigoMulta) {
+        this.codigoMulta = codigoMulta;
+    }
+
+    public BigDecimal getTaxa() {
+        return taxa;
+    }
+
+    public void setTaxa(BigDecimal taxa) {
+        this.taxa = taxa;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
 }

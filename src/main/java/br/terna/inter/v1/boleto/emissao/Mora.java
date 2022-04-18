@@ -1,22 +1,17 @@
 package br.terna.inter.v1.boleto.emissao;
 
-import lombok.Builder;
-import lombok.Data;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Data
-@Builder
-// @Slf4j
+
 public class Mora {
-    @Builder.Default
+
     private CodigoMora codigoMora = CodigoMora.ISENTO;
-    @Builder.Default
-    private BigDecimal taxa       = BigDecimal.ZERO;
-    @Builder.Default
-    private BigDecimal valor      = BigDecimal.ZERO;
-    private LocalDate  data;
+
+    private BigDecimal taxa = BigDecimal.ZERO;
+
+    private BigDecimal valor = BigDecimal.ZERO;
+    private LocalDate data;
 
     // public boolean isValid() {
     //     if (codigoMora != CodigoMora.ISENTO) {
@@ -27,4 +22,37 @@ public class Mora {
     //     }
     //     return true;
     // }
+
+
+    public CodigoMora getCodigoMora() {
+        return codigoMora;
+    }
+
+    public void setCodigoMora(CodigoMora codigoMora) {
+        this.codigoMora = codigoMora;
+    }
+
+    public BigDecimal getTaxa() {
+        return taxa;
+    }
+
+    public void setTaxa(BigDecimal taxa) {
+        this.taxa = taxa;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
 }

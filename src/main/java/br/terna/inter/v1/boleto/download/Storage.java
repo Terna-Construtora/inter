@@ -1,9 +1,9 @@
 package br.terna.inter.v1.boleto.download;
 
 
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,18 +12,17 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-@Slf4j
 public class Storage {
+    Logger log = LoggerFactory.getLogger(Storage.class);
     public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private static      Storage           instance            = new Storage();
-    private             File              rootPath;
+    private static Storage instance = new Storage();
+    private File rootPath;
 
     public static Storage get() {
         return instance;
     }
 
-    @SneakyThrows
-    public byte[] getNossoNumero(String nossoNumero) {
+    public byte[] getNossoNumero(String nossoNumero) throws IOException {
         this.checkRootPath();
         File arquivo = getArquivo(nossoNumero);
         if (arquivo != null) return IOUtils.toByteArray(new FileInputStream(arquivo));

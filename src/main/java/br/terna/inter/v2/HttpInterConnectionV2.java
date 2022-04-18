@@ -2,14 +2,12 @@ package br.terna.inter.v2;
 
 import br.terna.inter.HttpInterConnection;
 import br.terna.inter.v2.oauth.Token;
-import lombok.Setter;
 
 import java.io.InputStream;
 import java.net.http.HttpRequest;
 
 public class HttpInterConnectionV2 extends HttpInterConnection {
 
-    @Setter
     private Token token;
 
     public HttpInterConnectionV2(String p12Password, InputStream p12Is) throws Exception {

@@ -2,7 +2,6 @@ package br.terna.inter;
 
 import br.terna.inter.util.JsonUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import lombok.Getter;
 
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
@@ -13,7 +12,7 @@ import java.net.http.HttpResponse;
 import java.security.KeyStore;
 
 public class HttpInterConnection {
-    @Getter
+
     private HttpClient httpClient;
 
     public HttpInterConnection(String p12Password, InputStream p12Is) throws Exception {
@@ -47,5 +46,9 @@ public class HttpInterConnection {
 
         sslContext.init(kmf.getKeyManagers(), null, null);
         return sslContext;
+    }
+
+    public HttpClient getHttpClient() {
+        return httpClient;
     }
 }
