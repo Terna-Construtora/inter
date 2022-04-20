@@ -72,7 +72,7 @@ public class Pagador {
         return StringUtils.substring(cidade, 0, 60);
     }
 
-    public String getUF() {
+    public String getUf() {
         return StringUtils.substring(uf, 0, 2);
     }
 
@@ -126,10 +126,6 @@ public class Pagador {
         this.cidade = cidade;
     }
 
-    public String getUf() {
-        return uf;
-    }
-
     public void setUf(String uf) {
         this.uf = uf;
     }
@@ -152,5 +148,24 @@ public class Pagador {
 
     public void setTipoPessoa(TipoPessoa tipoPessoa) {
         this.tipoPessoa = tipoPessoa;
+    }
+
+    @Override
+    public String toString() {
+        return "Pagador{" +
+                "cnpjCpf='" + cnpjCpf + '\'' +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", cep='" + cep + '\'' +
+                ", numero='" + numero + '\'' +
+                ", complemento='" + complemento + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", uf='" + uf + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", ddd='" + ddd + '\'' +
+                ", tipoPessoa=" + tipoPessoa +
+                '}';
     }
 }
