@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URI;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -52,6 +53,26 @@ public class InterV1 {
             pageIndex++;
         }
         return res;
+    }
+
+    public List<Content> boletoEmitidosNoPeriodo(LocalDate inicio, LocalDate fim) throws Exception {
+        return consultar(FiltrarPor.TODOS, FiltrarDataPor.EMISSAO, inicio, fim, null, null);
+    }
+
+    public String boletoEmitidosNoPeriodoStream(LocalDate inicio, LocalDate fim) throws Exception {
+        List<Content> contents = boletoEmitidosNoPeriodo(inicio, fim);
+
+        StringBuilder out = new StringBuilder();
+        out.append("Nome;Nosso Numero;Valor;Data Vencimento;Status\n");
+        for (Content item: contents.stream().sorted(Comparator.comparing(Content::getNomeSacado)).collect(Collectors.toList())) {
+            out.append(item.getNomeSacado()).append(";");
+            out.append(item.getNossoNumero()).append(";");
+            out.append(item.getValorNominal()).append(";");
+            out.append(item.getDataEmissao()).append(";");
+            out.append(item.getSituacao()).append(";");
+            out.append("\n");
+        }
+        return out.toString();
     }
 
     public Page consultarPagina(FiltrarPor filtrarPor, FiltrarDataPor filtrarDataPor, LocalDate dataInicial, LocalDate dataFinal, Integer page, Integer pageSize) throws Exception {
